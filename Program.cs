@@ -32,24 +32,40 @@ namespace ECommerceApp
                         var firstName = Console.ReadLine();
                         Console.WriteLine("Enter Last Name");
                         var lastName = Console.ReadLine();
-                        Console.WriteLine("Enter EmailAddress");
-                        var emailAddress = Console.ReadLine();
                         Console.WriteLine("Enter UserName");
                         var userName = Console.ReadLine();
-                        var userAccount = Amazon.CreateAccount(firstName, lastName, userName, emailAddress);
-                        Console.WriteLine($"FN:{userAccount.FirstName},LN:{userAccount.LastName},UN:{userAccount.UserName},EA:{userAccount.EmailAddress}");
+                        Console.WriteLine("Enter EmailAddress");
+                        var emailAddress = Console.ReadLine();
+
+                        //var userAccount = Amazon.CreateAccount(firstName, lastName, userName, emailAddress);
+                        Amazon.CreateAccount(firstName, lastName, userName, emailAddress);
+                       // Console.WriteLine($"FN:{userAccount.FirstName},LN:{userAccount.LastName},UN:{userAccount.UserName},EA:{userAccount.EmailAddress}");
+                        PrintAllUsers();
                         break;
                     case "2":
-                        Console.WriteLine("Buy Product");
+                        Console.WriteLine("Select products to add to cart");
                         Amazon.DisplayProducts();
                         Console.WriteLine("Select a product");
                         int productChoice=Convert.ToInt32(Console.ReadLine());
+                        //to do*******************
+                        //if (!IsProductChoiceCorrect(productChoice) || IsProductInShoppingCart)
+                            
                         Console.WriteLine("Select it's quantity");
                         int productQuantity = Convert.ToInt32(Console.ReadLine());
-                        Amazon.BuyProduct(productChoice,productQuantity);
+                        Console.WriteLine("Add to Cart? Enter Y or N");
+                        var addToCartChoice = Console.ReadLine();
+                        //if (addToCartChoice.Equals('Y'))
+                        //{
+                            
+                            Amazon.CreateProductShoppingCart(productChoice, productQuantity);
+                        //}
                         break;
                     case "3":
-                        Console.WriteLine("View Shopping Cart");
+                       // Console.WriteLine("View Shopping Cart");
+                        // Console.WriteLine("Enter Email Address");
+                        //var emailAdd = Console.ReadLine();
+                        //Amazon.DisplayShoppingCartProducts(emailAdd);
+                        PrintAllProductsInShoppingCart();
                         break;
                     case "4":
                         //Console.WriteLine("Add Product to Inventory");
@@ -90,6 +106,29 @@ namespace ECommerceApp
             //return data;
         }
 
+        public static void PrintAllProductsInShoppingCart()
+        {
+            Console.WriteLine("Enter Email Address");
+            var emailAdd=Console.ReadLine();
+            var shoppingCartProducts=Amazon.GetShoppingCartProducts(emailAdd);
+            decimal sum = 0;
+            foreach (ShoppingCartProduct product in shoppingCartProducts)
+            {
+                Console.WriteLine("ProductID                  ProductQuantity       ProductPrice");
+                Console.WriteLine($"{product.ProductID},        {product.Quantity},     {product.ProductPrice}");
+                sum += product.Quantity * product.ProductPrice;
+            }
+            Console.WriteLine("Total Amount is:" +  sum);
+        }
+        public static void PrintAllUsers()
+        {
+            var users = Amazon.displayUsers();
+            foreach (UserAccount user in users)
+            {
+                Console.WriteLine($"FN:{user.FirstName},LN{user.LastName},UN:{user.UserName},EA:{user.EmailAddress} ");
+            }
+
+        }
 
     }
 }

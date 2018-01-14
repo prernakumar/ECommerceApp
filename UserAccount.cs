@@ -16,7 +16,15 @@ namespace ECommerceApp
         public String LastName { get; set; }
         public String EmailAddress { get; set; }
         public String UserName { get; set; }
-        public List<Product> ShoppingCart  { get; set;}
+        // public List<ShoppingCartProduct>ShoppingCart  { get; set; }
+        //public Dictionary<int, int> ShoppingCart { get; set; }
+            
 
+
+        /*public void AddToShoppingList()
+        {
+
+            ShoppingCart.Add(product);
+        }*/
     }
 }
