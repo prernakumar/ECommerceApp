@@ -1,11 +1,11 @@
-C:\Users\akbhatia\Documents\Prerna\KAL Academy\C#\ECommerceApp\ECommerceApp\obj\Debug\ECommerceApp.csprojResolveAssemblyReference.cache
-C:\Users\akbhatia\Documents\Prerna\KAL Academy\C#\ECommerceApp\ECommerceApp\obj\Debug\ECommerceApp.csproj.CoreCompileInputs.cache
-C:\Users\akbhatia\Documents\Prerna\KAL Academy\C#\ECommerceApp\ECommerceApp\bin\Debug\ECommerceApp.exe.config
-C:\Users\akbhatia\Documents\Prerna\KAL Academy\C#\ECommerceApp\ECommerceApp\bin\Debug\ECommerceApp.exe
-C:\Users\akbhatia\Documents\Prerna\KAL Academy\C#\ECommerceApp\ECommerceApp\bin\Debug\ECommerceApp.pdb
-C:\Users\akbhatia\Documents\Prerna\KAL Academy\C#\ECommerceApp\ECommerceApp\bin\Debug\EntityFramework.dll
-C:\Users\akbhatia\Documents\Prerna\KAL Academy\C#\ECommerceApp\ECommerceApp\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\akbhatia\Documents\Prerna\KAL Academy\C#\ECommerceApp\ECommerceApp\bin\Debug\EntityFramework.xml
-C:\Users\akbhatia\Documents\Prerna\KAL Academy\C#\ECommerceApp\ECommerceApp\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\akbhatia\Documents\Prerna\KAL Academy\C#\ECommerceApp\ECommerceApp\obj\Debug\ECommerceApp.exe
-C:\Users\akbhatia\Documents\Prerna\KAL Academy\C#\ECommerceApp\ECommerceApp\obj\Debug\ECommerceApp.pdb
+C:\Users\akbhatia\Documents\Prerna\GitHub\ECommerceApp\obj\Debug\ECommerceApp.csprojResolveAssemblyReference.cache
+C:\Users\akbhatia\Documents\Prerna\GitHub\ECommerceApp\obj\Debug\ECommerceApp.csproj.CoreCompileInputs.cache
+C:\Users\akbhatia\Documents\Prerna\GitHub\ECommerceApp\bin\Debug\ECommerceApp.exe.config
+C:\Users\akbhatia\Documents\Prerna\GitHub\ECommerceApp\bin\Debug\ECommerceApp.exe
+C:\Users\akbhatia\Documents\Prerna\GitHub\ECommerceApp\bin\Debug\ECommerceApp.pdb
+C:\Users\akbhatia\Documents\Prerna\GitHub\ECommerceApp\bin\Debug\EntityFramework.dll
+C:\Users\akbhatia\Documents\Prerna\GitHub\ECommerceApp\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\akbhatia\Documents\Prerna\GitHub\ECommerceApp\bin\Debug\EntityFramework.xml
+C:\Users\akbhatia\Documents\Prerna\GitHub\ECommerceApp\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\akbhatia\Documents\Prerna\GitHub\ECommerceApp\obj\Debug\ECommerceApp.exe
+C:\Users\akbhatia\Documents\Prerna\GitHub\ECommerceApp\obj\Debug\ECommerceApp.pdb

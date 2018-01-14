@@ -18,7 +18,7 @@ public String ProductDescription     {get; set;}
         //List of sellers
         //String Category;
 
-        public void deductQuantityFromInventory(int productQuantityBought)
+        public  void deductQuantityFromInventory(int productQuantityBought)
         {
             ProductQuantity = ProductQuantity - productQuantityBought;
 

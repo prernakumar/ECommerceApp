@@ -44,8 +44,32 @@ namespace ECommerceApp
             return product;
 
         }
+        public static void DisplayProducts()
+        {
+           var productList= db.Products.ToList();
+            Console.Write("Count    Name                    Description                          Quantity       Price  ");
+            Console.WriteLine();
+            for (int i=0;i<productList.Count;i++)
+            {
+                Console.WriteLine($"{productList.ElementAt(i).ProductID}   {productList.ElementAt(i).ProductName}  {productList.ElementAt(i).ProductDescription}  {productList.ElementAt(i).ProductQuantity}  {productList.ElementAt(i).ProductPrice}");
+            }
 
+        }
 
+        public static void BuyProduct(int productID,int quantity)
+        {
+            var product=db.Products.SingleOrDefault(a => a.ProductID == productID);
+            //Product.deductQuantityFromInventory(quantity);
+            if (product != null)
+            {
+                //product.ProductQuantity = product.ProductQuantity - quantity;
+                product.deductQuantityFromInventory(quantity);
+                db.SaveChanges();
+            }
+            Console.WriteLine("Pay" + product.getAmountOfProduct(quantity));
+            
+            
+        }
 
         }
       }

@@ -41,6 +41,12 @@ namespace ECommerceApp
                         break;
                     case "2":
                         Console.WriteLine("Buy Product");
+                        Amazon.DisplayProducts();
+                        Console.WriteLine("Select a product");
+                        int productChoice=Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Select it's quantity");
+                        int productQuantity = Convert.ToInt32(Console.ReadLine());
+                        Amazon.BuyProduct(productChoice,productQuantity);
                         break;
                     case "3":
                         Console.WriteLine("View Shopping Cart");
@@ -63,16 +69,17 @@ namespace ECommerceApp
         public static void getTokensFromFileAndAddProduct(System.IO.StreamReader file)
         {
            
-            String line = "";
+            String line = String.Empty;
             //String[] tokens = new String[line.Length];
             List<Product> data = new List<Product>();
             while ((line = file.ReadLine()) != null)
             {
                 //System.Console.WriteLine(line);
                 // List<String> list = new List<string>();
-                var tokensCount = line.Split().Count(x => x.Equals('\t'));
-                String[] tokens = new string[tokensCount];
-                tokens = line.Split('\t');
+                //var tokensCount = line.Split().Count(x => x.Equals('\t'));
+                //String[] tokens = new string[tokensCount];
+                //tokens = line.Split('\t');
+                String[] tokens = line.Split(new char[] { '\t' }, StringSplitOptions.RemoveEmptyEntries);
                 List<string> list = new List<string>(tokens);
                 
                 Amazon.addProductToInventory(list);
