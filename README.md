@@ -5,3 +5,4 @@ A C# based application that allows the user to perform the following operations:
 <br>3. View the shopping Cart and the total CheckOut Amount
 <br>4. Delete products from the Shopping Cart 
 <br>5. Update the Quantity of the selected products in the Cart</br>
+<br>6. Buy the products in the Shopping Cart
