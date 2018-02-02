@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ECommerceApp
 {
-    class Transaction
+   public  class Transaction
     {
-        int TransactionID;
-        int UserID;
-        decimal TransactionAmount;
+      [Key]
+      public int TransactionID { get; set; }
+      public int UserID { get; set; }
+      public decimal TransactionAmount { get; set; }
     }
 
 

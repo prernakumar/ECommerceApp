@@ -115,11 +115,21 @@ namespace ECommerceApp
             foreach (ShoppingCartProduct product in shoppingCartProducts)
             {
                 Console.WriteLine("ProductID                  ProductQuantity       ProductPrice");
-                Console.WriteLine($"{product.ProductID},        {product.Quantity},     {product.ProductPrice}");
+                Console.WriteLine($"{product.ProductID},        {product.Quantity},     {product.ProductPrice*product.Quantity}");
                 sum += product.Quantity * product.ProductPrice;
             }
             Console.WriteLine("Total Amount is:" +  sum);
+
+           Console.WriteLine("Do you want to buy all the above items? Y or N");
+           String choice= Console.ReadLine();
+           if (choice.Equals("Y"))
+            {
+                Amazon.CreateTransaction(emailAdd,sum);                   
+            }
+
+
         }
+
         public static void PrintAllUsers()
         {
             var users = Amazon.displayUsers();

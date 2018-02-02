@@ -176,6 +176,47 @@ namespace ECommerceApp
              return db.ShoppingCartProducts.Where(a => a.UserID == user.UserID).ToList();
 
         }
+        public static Transaction CreateTransaction(String emailAddress, decimal sum)
+        {
+            var user=db.UserAccounts.SingleOrDefault(a => a.EmailAddress == emailAddress);
+
+            Transaction transaction = new Transaction()
+            {
+                UserID = user.UserID,
+                TransactionAmount = sum
+
+            };
+            db.Transactions.Add(transaction);
+            db.SaveChanges();
+            ReduceQuantityFromInventoryAfterTransaction(user.UserID);
+            DeleteUserShoppingCartItemsAfterTransaction(user.UserID);
+            
+            return transaction;
         }
+       
+        public static void DeleteUserShoppingCartItemsAfterTransaction(int userID)
+        {
+            var shoppingCartProducts = db.ShoppingCartProducts.AsEnumerable().Where(a => a.UserID == userID).ToList();
+            foreach (var row in shoppingCartProducts)
+            {
+                db.ShoppingCartProducts.Remove(row);
+                db.SaveChanges();
+                    
+            }
+        }
+        public static void ReduceQuantityFromInventoryAfterTransaction(int userID)
+        {
+            var shoppingCartProducts = db.ShoppingCartProducts.AsEnumerable().Where(a => a.UserID == userID).ToList();
+            foreach (ShoppingCartProduct row in shoppingCartProducts)
+            {
+                var product = db.Products.SingleOrDefault(p=>p.ProductID== row.ProductID);
+                product.deductQuantityFromInventory(row.Quantity);
+                db.SaveChanges();
+                    
+            }
+        }
+
+
+    }
       }
 
