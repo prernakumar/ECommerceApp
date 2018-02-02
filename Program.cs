@@ -70,7 +70,7 @@ namespace ECommerceApp
                     case "4":
                         //Console.WriteLine("Add Product to Inventory");
                         System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\akbhatia\Documents\Prerna\KAL Academy\doc.txt");
-                        getTokensFromFileAndAddProduct(file);
+                        AddProductToInventory(file);
                         Console.WriteLine("Products Added");
                         break;
                     default:
@@ -82,7 +82,7 @@ namespace ECommerceApp
             }
         }
 
-        public static void getTokensFromFileAndAddProduct(System.IO.StreamReader file)
+        public static void AddProductToInventory(System.IO.StreamReader file)
         {
            
             String line = String.Empty;
@@ -120,15 +120,44 @@ namespace ECommerceApp
             }
             Console.WriteLine("Total Amount is:" +  sum);
 
-           Console.WriteLine("Do you want to buy all the above items? Y or N");
-           String choice= Console.ReadLine();
-           if (choice.Equals("Y"))
+            /*Console.WriteLine("Do you want to buy all the above items? Y or N");
+            String choice= Console.ReadLine();
+            if (choice.Equals("Y"))
+             {
+                 Amazon.CreateTransaction(emailAdd,sum);                   
+             }*/
+
+            while (true)
             {
-                Amazon.CreateTransaction(emailAdd,sum);                   
+                Console.WriteLine("1.Buy All Items in Cart");
+                Console.WriteLine("2.Delete a product from cart");
+                Console.WriteLine("3.Edit Quantity of Product");
+                Console.WriteLine("Select an option");
+                var choice = Console.ReadLine();
+                switch (choice)
+                {
+                    case "1":
+                        Amazon.CreateTransaction(emailAdd, sum);
+                        break;
+                    case "2":
+                        Console.WriteLine("Enter choice of product");
+                        var productChoice = Convert.ToInt32(Console.ReadLine());
+                        Amazon.DeleteProductFromCart(emailAdd, productChoice);
+                        break;
+                    case "3":
+                        Console.WriteLine("Enter choice of product");
+                        productChoice = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter new quantity of product");
+                        var newProductQuantity = Convert.ToInt32(Console.ReadLine());
+                        Amazon.EditQuantityOfProductInCart(emailAdd, productChoice, newProductQuantity);
+                        break;
+                    
+                    default:
+                        Console.WriteLine("Invalid Choice");
+                        return;
+                }
             }
-
-
-        }
+         }
 
         public static void PrintAllUsers()
         {

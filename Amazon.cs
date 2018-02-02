@@ -216,7 +216,45 @@ namespace ECommerceApp
             }
         }
 
+        public static void DeleteProductFromCart(String emailAddress, int productID)
+        {
+            var user = db.UserAccounts.SingleOrDefault(a => a.EmailAddress == emailAddress);
+            var shoppingCartProducts = db.ShoppingCartProducts.AsEnumerable().Where(a => a.UserID == user.UserID).ToList();
 
+            foreach (ShoppingCartProduct row in shoppingCartProducts)
+            {
+                if(row.ProductID==productID)
+                    db.ShoppingCartProducts.Remove(row);
+
+                //var product = db.Products.SingleOrDefault(p => p.ProductID == row.ProductID);
+                //product.deductQuantityFromInventory(row.Quantity);
+                db.SaveChanges();
+
+            }
+
+        }
+
+        public static void EditQuantityOfProductInCart(String emailAddress, int productID,int newProductQuantity)
+        {
+            var user = db.UserAccounts.SingleOrDefault(a => a.EmailAddress == emailAddress);
+            var shoppingCartProducts = db.ShoppingCartProducts.AsEnumerable().Where(a => a.UserID == user.UserID).ToList();
+
+            foreach (ShoppingCartProduct row in shoppingCartProducts)
+            {
+                if (row.ProductID == productID)
+                // var product = db.Products.SingleOrDefault(p => p.productID == row.ProductID);
+                
+                row.EditQuantityinCart(newProductQuantity);
+                db.SaveChanges();
+                //db.ShoppingCartProducts.EditProductQuantity(row);
+
+                //var product = db.Products.SingleOrDefault(p => p.ProductID == row.ProductID);
+                //product.deductQuantityFromInventory(row.Quantity);
+               // db.SaveChanges();
+
+            }
+
+        }
     }
-      }
+ }
 
